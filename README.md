@@ -6,7 +6,7 @@
 > npm install serverless
 
 Example to set up the Amazon Web Services Key and Secret usign Command
-> npx serverless config credentials --provider aws --key AKIAIOSFODNN7EXAMPLE --secret wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+> npx serverless config credentials --provider aws --key AKIAIOSFODNN7EXAMPLE --secret wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY --overwrite
 
 To see other ways as AWS-Cli see:
 https://github.com/serverless/serverless/blob/HEAD/docs/providers/aws/guide/credentials.md
@@ -25,11 +25,16 @@ This will call your handle.js the module.exports.hello function
 Deploy Service
 Service is the configuration of the Amazon Lambda contained in the hello-world/serverless.yml
 
-> serverless deploy -v
+If you have the needed permissions to do that, I mean, normally you need to create a:
+- s3 Storage
+- Cloudform
+- Cloudwatch
+- User for S3 write
+
+Otherwise you need configure the .yml with the previously AWS created
+
+> npx serverless deploy -v
 
 Deploy function
 Deploy the .js function hello-world/handler.js
-> serverless deploy function -f hello
-
-
-
+> npx serverless deploy function -f hello
